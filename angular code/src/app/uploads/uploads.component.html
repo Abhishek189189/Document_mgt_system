@@ -1,0 +1,68 @@
+
+<div class="upload-form">
+<form [formGroup]="profileForm"  enctype="multipart/form-data" (ngSubmit)="onSubmit()">
+
+    <h1>Document Management System</h1>
+      <label for="file">File:</label>
+      <input type="file" formControlName="file" (change)="OnSelectedFile($event)" />
+   
+      <button type="submit" [disabled]="profileForm.invalid"  (click)="print()">Upload</button>
+  </form>
+
+  <ng-container *ngIf="isImageSelected">
+    <img [src]="previewImage">
+  </ng-container>
+
+</div>
+  
+
+<!-- <div *ngIf="test==true" style="text-align: center;">
+    <br>
+    <br>
+    <span>File Uploaded Sucessfully!</span>
+  </div> -->
+
+
+
+  
+
+
+  <!-- <div *ngif="check==true">
+    <span>File Uploaded Sucessfully</span>
+
+  </div> -->
+
+<div class="box"  >
+
+    <br>
+    <br>
+    <!-- <button type="button" id="list" (click)="print()" class="button">Display Data</button> -->
+
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <!-- <th>Path</th> -->
+            <th>File Type</th>
+            <th>Button</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data">
+            <td>{{ item.name }}</td>
+            <!-- <td>{{ item.path }}</td> -->
+            <td>{{ item.filetype }}</td>
+            <td><button type="button" class="download" (click)="download(item.name)" >Download</button>
+              <button type="button" class="download" (click)="deletes(item.id,item.name)"  >Delete</button></td>
+            
+
+          </tr>
+        </tbody>
+        
+      </table>
+
+    </div>  
+
+
+  
